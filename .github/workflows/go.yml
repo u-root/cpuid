@@ -1,0 +1,39 @@
+name: Go
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  linters:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.22.x'
+    - name: Check vendored dependencies
+      run: |
+        go mod tidy
+        go mod verify
+    - name: gofmt
+      run: test -z "$(gofmt -s -l $(find -name '*.go' | grep -v /vendor/))"
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: '1.22.x'
+
+    - name: Build Example
+      run: go run -mod=mod -v examples/*.go
+
+    - name: Vet Test
+      run: go vet -composites=false -mod=mod ./...
