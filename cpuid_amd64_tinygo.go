@@ -1,4 +1,5 @@
 // Copyright 2015 Intel Corporation.
+// Copyright 2025 the u-root Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
@@ -40,13 +41,13 @@ func xgetbv_low(arg1 uint32) (eax, edx uint32) {
 }
 
 //go:linkname xgetbv vendor/golang.org/x/sys/cpu.xgetbv
-func xgetbv(arg1 uint32 )(eax, edx uint32) {
-    return xgetbv_low(arg1)
+func xgetbv(arg1 uint32) (eax, edx uint32) {
+	return xgetbv_low(arg1)
 }
 
 //go:linkname cpuid vendor/golang.org/x/sys/cpu.cpuid
 func cpuid(arg1, arg2 uint32) (eax, ebx, ecx, edx uint32) {
-    return cpuid_low(arg1, arg2)
+	return cpuid_low(arg1, arg2)
 }
 
 func init() {
