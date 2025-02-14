@@ -70,17 +70,6 @@ func detectFeatures() {
 	}
 }
 
-var leaf02Names = [...]string{
-	"NULL",
-	"DATA_CACHE",
-	"INSTRUCTION_CACHE",
-	"UNIFIED_CACHE",
-	"TLB",
-	"DTLB",
-	"STLB",
-	"PREFETCH",
-}
-
 func leaf0() {
 
 	eax, ebx, ecx, edx := cpuid_low(0, 0)
