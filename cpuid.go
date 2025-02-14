@@ -1,5 +1,5 @@
 // Copyright 2015 Intel Corporation.
-// Copyright 2025 the u-root authors. All rights reserved.
+// Copyright 2025 the u-root Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
@@ -297,16 +297,22 @@ var brandStrings = map[string]int{
 	"XenVMMXenVMM": XEN,
 }
 
-var maxInputValue uint32
-var maxExtendedInputValue uint32
-var extendedModelId uint32
-var extendedFamilyId uint32
-var brandIndex uint32
-var brandId int
-var featureFlags uint64
-var thermalAndPowerFeatureFlags uint32
-var extendedFeatureFlags uint64
-var extraFeatureFlags uint64
+// golanci-lint triggers false positives for ”unused” variables
+var (
+	maxInputValue         uint32
+	maxExtendedInputValue uint32
+	//nolint:unused
+	extendedModelId uint32
+	//nolint:unused
+	extendedFamilyId uint32
+	//nolint:unused
+	brandIndex                  uint32
+	brandId                     int
+	featureFlags                uint64
+	thermalAndPowerFeatureFlags uint32
+	extendedFeatureFlags        uint64
+	extraFeatureFlags           uint64
+)
 
 const (
 	UKNOWN = iota
